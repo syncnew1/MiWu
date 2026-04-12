@@ -6,6 +6,7 @@ import miwu.android.R
 import miwu.android.databinding.MiotWidgetListButtonBinding
 import miwu.android.wrapper.base.MiwuActionWrapper
 import miwu.annotation.Wrapper
+import miwu.icon.NoneIcon
 import miwu.spec.Action
 import miwu.spec.Property
 import miwu.spec.Service
@@ -21,13 +22,18 @@ class VacuumButtonWrapper(context: Context, widget: MiwuWidget<Unit>) :
     override val onClickView: View get() = binding.on
 
     override fun initWrapper() {
-        binding.on.setIcon(icon)
-        binding.desc.text = descriptionTranslation
+        val desc = descriptionTranslation
+        if (icon is NoneIcon) {
+            binding.on.setImageResource(resolveFallbackIcon(actionName, desc))
+        } else {
+            binding.on.setIcon(icon)
+        }
+        binding.desc.text = desc
         register(Service.Vacuum, Property.Mode) { value ->
             if (value !is Int) return@register
             val list = status?.valueList ?: return@register
-            val desc = list.firstOrNull { it.value == value }?.description ?: return@register
-            when (desc) {
+            val modeDesc = list.firstOrNull { it.value == value }?.description ?: return@register
+            when (modeDesc) {
                 "Sweeping", "Sweeping and Mopping", "Mopping" -> onCleaning()
                 "Charging", "Go Charging" -> onCharging()
                 "Upgrading" -> Unit
@@ -62,4 +68,16 @@ class VacuumButtonWrapper(context: Context, widget: MiwuWidget<Unit>) :
         binding.on.setBackgroundResource(R.drawable.bg_item)
     }
 
+    private fun resolveFallbackIcon(action: String, desc: String): Int {
+        val actionKey = action.lowercase()
+        val descKey = desc.lowercase()
+        return when {
+            actionKey.contains("sleep") || descKey.contains("睡") || descKey.contains("sleep") -> R.drawable.ic_sleep
+            actionKey.contains("turn-on") || actionKey.contains("power-on") || actionKey.contains("start") || descKey.contains("唤醒") || descKey.contains("开机") || descKey.contains("启动") || descKey.contains("wake") -> R.drawable.ic_power
+            actionKey.contains("turn-off") || actionKey.contains("power-off") || actionKey.contains("stop") || descKey.contains("关机") || descKey.contains("关闭") || descKey.contains("off") -> R.drawable.ic_pause_round
+            actionKey.contains("charge") || descKey.contains("充电") || descKey.contains("charge") -> R.drawable.ic_charge
+            actionKey.contains("clean") || descKey.contains("清扫") || descKey.contains("清洁") || descKey.contains("clean") -> R.drawable.ic_clean
+            else -> R.drawable.ic_mode
+        }
+    }
 }

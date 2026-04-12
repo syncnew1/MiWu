@@ -21,22 +21,23 @@
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
+            android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textColor="@color/m3_on_surface"
+            android:textSize="@dimen/miot_num_text_size"
             tools:text="25.5" />
 
         <TextView
             android:id="@+id/unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
+            android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
             android:singleLine="true"
             android:text="°"
-            android:textSize="28sp"
+            android:textColor="@color/m3_on_surface_variant"
+            android:textSize="@dimen/miot_degree_text_size"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 

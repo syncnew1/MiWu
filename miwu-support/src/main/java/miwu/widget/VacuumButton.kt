@@ -8,6 +8,9 @@ import miwu.support.base.MiwuWidget
 @Body
 @Bind<Action>("battery", "start-charge")
 @Bind<Action>("vacuum", "start-sweep")
+@Bind<Action>("laptop", "turn-on")
+@Bind<Action>("laptop", "turn-off")
+@Bind<Action>("laptop", "sleep-mode-on")
 // @Bind<Action>("vacuum", "stop-sweeping")
 class VacuumButton : MiwuWidget<Unit>() {
     override val icon get() = Icons.mapTo(actionName)

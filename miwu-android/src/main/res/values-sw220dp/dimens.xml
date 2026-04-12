@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="device_miwu_layout_margin_bottom">9dp</dimen>
+    <dimen name="miot_widget_card_height">76dp</dimen>
+
+    <dimen name="miot_value_text_size">33sp</dimen>
+    <dimen name="miot_unit_text_size">14sp</dimen>
+    <dimen name="miot_desc_text_size">13sp</dimen>
+
+    <dimen name="miot_num_text_size">25sp</dimen>
+    <dimen name="miot_num_secondary_text_size">25sp</dimen>
+    <dimen name="miot_degree_text_size">26sp</dimen>
+</resources>

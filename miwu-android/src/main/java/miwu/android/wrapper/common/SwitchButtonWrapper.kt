@@ -5,6 +5,7 @@ import miwu.android.R
 import miwu.android.databinding.MiotWidgetListButtonBinding
 import miwu.android.wrapper.base.MiwuWrapper
 import miwu.annotation.Wrapper
+import miwu.icon.NoneIcon
 import miwu.support.base.MiwuWidget
 import miwu.widget.SwitchButton
 
@@ -29,6 +30,11 @@ class SwitchButtonWrapper(context: Context, widget: MiwuWidget<Boolean>) :
 
     override fun initWrapper() {
         binding.desc.text = "开关"
+        if (icon is NoneIcon) {
+            binding.on.setImageResource(R.drawable.ic_power)
+        } else {
+            binding.on.setIcon(icon)
+        }
     }
 
     override fun onClick() {

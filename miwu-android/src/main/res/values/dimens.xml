@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="device_miwu_layout_margin_bottom">5dp</dimen>
-    <dimen name="miot_widget_card_height">65dp</dimen>
+    <dimen name="device_miwu_layout_margin_bottom">8dp</dimen>
+    <dimen name="miot_widget_card_height">72dp</dimen>
+
+    <dimen name="miot_value_text_size">30sp</dimen>
+    <dimen name="miot_unit_text_size">13sp</dimen>
+    <dimen name="miot_desc_text_size">12sp</dimen>
+
+    <dimen name="miot_num_text_size">23sp</dimen>
+    <dimen name="miot_num_secondary_text_size">23sp</dimen>
+    <dimen name="miot_degree_text_size">24sp</dimen>
 </resources>

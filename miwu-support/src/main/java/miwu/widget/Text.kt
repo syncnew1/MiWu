@@ -11,4 +11,6 @@ import miwu.support.base.MiwuWidget
 @Bind<Property>("environment", "relative-humidity")
 @Bind<Property>("environment", "pm2.5-density")
 @Bind<Property>("gas-sensor", "gas-concentration")
+@Bind<Property>("cpu-management", "temperature")
+@Bind<Property>("battery", "battery-level")
 class Text : MiwuWidget<String>()

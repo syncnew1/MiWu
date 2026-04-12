@@ -82,7 +82,16 @@ class MiotDeviceManagerImpl internal constructor(
     }
 
     private fun initDevice() {
-        val device = DeviceRegistry.registry[Urn.parseFrom(deviceUrn).name] ?: return
+        val specType = device.specType ?: return
+        val model = runCatching { Urn.parseFrom(specType).name }.getOrNull() ?: return
+        val device = DeviceRegistry.registry[model]
+
+        if (device == null) {
+            supportWidget += PropertyRegistry.registry.values.mapNotNull { it as? MiwuWidgetClass }
+            supportWidget += ActionRegistry.registry.values.mapNotNull { it as? MiwuWidgetClass }
+            return
+        }
+
         val widgetAnnotations =
             device.annotations.firstOrNull { it is Widgets } as? Widgets ?: return
         supportWidget += (widgetAnnotations.widgets as Array<KClass<MiwuWidget<*>>>).map { it.java }

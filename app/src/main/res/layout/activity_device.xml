@@ -16,7 +16,9 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
 
         <requestFocus />
 
@@ -39,6 +41,7 @@
                     android:src="@drawable/ic_miwu_placeholder" />
 
                 <TextView
+                    android:id="@+id/placeholder_text"
                     style="@style/Wear.DescText"
                     android:layout_marginTop="10dp"
                     android:text="@string/current_not_support" />

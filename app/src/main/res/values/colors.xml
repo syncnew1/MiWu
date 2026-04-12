@@ -11,11 +11,11 @@
     <color name="gray">#353638</color>
     <color name="item_bg">#b3202020</color>
     <color name="transparent">#00000000</color>
-    <color name="blue">#6186FC</color>
-    <color name="highlight">#0E84FF</color>
+    <color name="blue">#8FC9FF</color>
+    <color name="highlight">#A8CFFF</color>
     <color name="dialog_black">#E6000000</color>
     <color name="lrc_disable">#80FFFFFF</color>
-    <color name="lrc_bg">#33FFFFFF</color>
+    <color name="lrc_bg">#33A8CFFF</color>
     <color name="gray_light">#FFE0E0E0</color>
     <color name="mi_green">#57D1B8</color>
     <color name="mi_green_tile">#7057D1B8</color>
@@ -23,8 +23,18 @@
     <color name="orange">#FE733A</color>
     <color name="color_temperature_start">#FEBF23</color>
     <color name="color_temperature_end">#FFE9AE</color>
-    <color name="item_background_green">#387560</color>
-    <color name="item_background">#161616</color> // #b3202020 + #000000
-    <color name="item_background_gray">#262626</color>
+
+    <color name="m3_surface">#111417</color>
+    <color name="m3_surface_container">#1B2024</color>
+    <color name="m3_surface_container_high">#252B31</color>
+    <color name="m3_primary">#8FC9FF</color>
+    <color name="m3_primary_container">#284D71</color>
+    <color name="m3_on_primary_container">#D7E9FF</color>
+    <color name="m3_on_surface">#E8EDF2</color>
+    <color name="m3_on_surface_variant">#B4C2CE</color>
+    <color name="m3_outline">#3A444D</color>
+
+    <color name="item_background">@color/m3_surface_container</color>
+    <color name="item_background_gray">@color/m3_surface_container_high</color>
 
 </resources>

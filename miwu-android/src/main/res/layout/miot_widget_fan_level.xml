@@ -7,48 +7,49 @@
     android:orientation="horizontal">
 
     <miwu.android.view.app.MiotButton
-        style="@style/MiotIconButton"
         android:id="@+id/minus"
+        style="@style/MiotIconButton"
         android:src="@drawable/ic_down" />
 
     <LinearLayout
-        android:paddingVertical="15dp"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingVertical="12dp">
 
         <TextView
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
+            android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textColor="@color/m3_on_surface"
+            android:textSize="@dimen/miot_num_text_size"
             tools:text="1" />
 
         <View
             android:layout_width="3dp"
-            android:layout_height="15dp"
-            android:background="@drawable/bg_block"
-            android:layout_marginHorizontal="7dp" />
+            android:layout_height="13dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/bg_block" />
 
         <TextView
             android:id="@+id/num_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_bold"
+            android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:textSize="28sp"
+            android:textColor="@color/m3_on_surface_variant"
+            android:textSize="@dimen/miot_num_secondary_text_size"
             tools:text="5" />
 
     </LinearLayout>
 
     <miwu.android.view.app.MiotButton
-        style="@style/MiotIconButton"
         android:id="@+id/plus"
+        style="@style/MiotIconButton"
         android:src="@drawable/ic_up" />
 </LinearLayout>

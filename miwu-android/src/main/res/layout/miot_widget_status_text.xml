@@ -4,21 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="start"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingHorizontal="2dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="4dp">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="37sp"
-        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/m3_on_surface"
+        android:textSize="@dimen/miot_value_text_size"
+        android:textStyle="normal"
         tools:text="正在充电" />
 
     <TextView
         android:id="@+id/sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:text="当前状态" />
+        android:fontFamily="sans-serif"
+        android:text="当前状态"
+        android:textColor="@color/m3_on_surface_variant"
+        android:textSize="@dimen/miot_unit_text_size" />
 </LinearLayout>

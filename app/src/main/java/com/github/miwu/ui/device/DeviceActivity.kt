@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.github.miwu.ui.device.DeviceViewModel.Event.DeviceInitiated
 import com.github.miwu.utils.Logger
 import kndroidx.activity.ViewActivityX
@@ -12,7 +14,9 @@ import kndroidx.extension.start
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
-import miwu.android.R
+import kotlinx.coroutines.launch
+import com.github.miwu.R as AppR
+import miwu.android.R as MiwuAndroidR
 import miwu.android.wrapper.base.ViewMiwuWrapper
 import miwu.miot.kmp.utils.json
 import miwu.miot.model.MiotUser
@@ -26,15 +30,25 @@ import com.github.miwu.databinding.ActivityDeviceBinding as Binding
 class DeviceActivity : ViewActivityX<Binding>(Binding::inflate) {
     override val viewModel: DeviceViewModel by viewModel()
     private val logger = Logger()
-    private val marginBottom by lazy { resources.getDimensionPixelSize(R.dimen.device_miwu_layout_margin_bottom) }
+    private val marginBottom by lazy { resources.getDimensionPixelSize(MiwuAndroidR.dimen.device_miwu_layout_margin_bottom) }
     private val wrapperList = arrayListOf<ViewMiwuWrapper<*>>()
 
     override fun init() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uncontrollableReason.collect { reason ->
+                    binding.placeholderText.text = reason ?: viewModel.getFallbackUnsupportedReason()
+                    if (reason != null) binding.placeholder.isVisible = true
+                }
+            }
+        }
+
         with(viewModel) {
             event.receiveAsFlow()
                 .onEach(::onEvent)
                 .launchIn(lifecycleScope)
             printDeviceInfo()
+            checkControllable()
             manager.init()
         }
     }

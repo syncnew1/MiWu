@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/miot_widget_card_height"
     android:background="@drawable/bg_item"
-    android:padding="10dp">
+    android:padding="12dp">
 
     <ImageView
         android:id="@+id/img"
@@ -13,14 +13,14 @@
         android:layout_gravity="center_vertical"
         android:adjustViewBounds="true"
         android:background="@drawable/bg_switch_button_off"
-        android:maxHeight="45dp"
+        android:maxHeight="48dp"
         android:padding="10dp"
         android:src="@drawable/ic_power" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -28,22 +28,25 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:includeFontPadding="false"
             android:scrollbars="none"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textColor="@color/m3_on_surface"
+            android:textSize="15sp"
+            android:textStyle="normal"
             tools:text="开启" />
 
         <TextView
             android:id="@+id/sub_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:includeFontPadding="false"
             android:scrollbars="none"
-            android:textSize="15sp"
+            android:textColor="@color/m3_on_surface_variant"
+            android:textSize="13sp"
             android:visibility="gone"
             tools:text="灯"
             tools:visibility="visible" />

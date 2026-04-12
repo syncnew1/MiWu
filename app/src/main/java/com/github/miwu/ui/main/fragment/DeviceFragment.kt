@@ -17,6 +17,10 @@ class DeviceFragment : ViewFragmentX<Binding>(Binding::inflate) {
 
     fun onItemClick(item: Any?) {
         if (item !is MiotDevice || !item.isOnline || user == null) return
+        if (item.specType.isNullOrBlank()) {
+            "该设备暂不支持米家标准控制".toast()
+            return
+        }
         val user = user ?: return
         requireContext().startDeviceActivity(item, user)
     }

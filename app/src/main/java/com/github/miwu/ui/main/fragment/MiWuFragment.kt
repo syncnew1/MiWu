@@ -1,5 +1,7 @@
 package com.github.miwu.ui.main.fragment
 
+import com.github.miwu.logic.database.entity.FavoriteDevice
+import com.github.miwu.logic.database.entity.FavoriteDevice.Companion.toMiot
 import com.github.miwu.ui.device.DeviceActivity.Companion.startDeviceActivity
 import com.github.miwu.ui.edit.EditFavoriteActivity
 import com.github.miwu.ui.main.MainViewModel
@@ -18,9 +20,14 @@ class MiWuFragment : ViewFragmentX<Binding>(Binding::inflate) {
     val user get() = viewModel.miotRepository.user.also(::checkMiotUser)
 
     fun onItemClick(item: Any?) {
-        if (item !is MiotDevice || !item.isOnline) return
+        val device = when (item) {
+            is MiotDevice -> item
+            is FavoriteDevice -> item.toMiot()
+            else -> return
+        }
+        if (!device.isOnline) return
         val user = user ?: return
-        requireContext().startDeviceActivity(item, user)
+        requireContext().startDeviceActivity(device, user)
     }
 
     fun onItemLongClick(item: Any?) {
